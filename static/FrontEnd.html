@@ -1,0 +1,85 @@
+
+<div class="container-fluid" id="app">
+<!-- Inicio Titulos -->
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <h1 class="text-center">BackEnd Con Vue.Js</h1>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+        </div>
+    </div>
+<!-- Fin Titulos -->
+
+<!-- Inicio DropDown y URL -->
+    <div class="row">
+        <div class="col-6 col-md-4">
+                <select class="form-control" v-model="selected_backend"> 
+                        <option v-for="back in backends" v-bind:value="back">
+                              {{back.nombre}}
+                        </option>
+                 </select> 
+        </div>
+        <div class="col-2 col-md-1">
+                <label>URL de Acceso</label>
+        </div>
+
+        <div class="col-6 col-md-4">
+                <input type="text" class="form-control" v-model="selected_backend.url">
+        </div>
+    </div>
+<!-- Fin Dropdown y URL-->
+
+<!-- Inico de Buscas-->   
+        <div class="row">
+
+        <div class="col-6 col-md-4">
+                <input type="text" class="form-control" v-model="filter" placeholder="Ingrese Datos Para Buscar">
+        </div>
+    </div>
+<!-- Fin Buscar-->
+
+<!-- Inico Boton de Busqueda-->
+    <div class="row">
+            <div class="col-6 col-md-4" >
+                    <form @submit.prevent="leerAPI">
+                            <div class="form-group">
+                              <div class="input-group" >
+                                      <h1></h1>
+                                      <h1></h1>
+                                  <button class="btn btn-success" type="submit">Mostrar Consulta</button></span>
+                              </div>
+                            </div>
+                          </form>
+            </div>
+    </div>
+ <!-- Fin Boton de Busqueda--> 
+
+ 
+ <!-- Inicio de Tabla de Datos-->   
+        <table class="table table-hover table-striped">
+            <thead>
+                  <td v-for="(valor, llave) in filtredData[0]" >{{ llave }}</td>
+            </thead>
+            <tbody>
+                <tr v-for="datos in filtredData">
+                         <td v-for="valor in datos">
+                        {{valor}}
+                         </td>
+                </tr>
+            </tbody>
+        </table>
+<!-- Fin de Tabla de Datos-->
+
+<footer class="container-fluid">
+                <p> Created by Alvaro Gudiel</p>
+        </footer>
+</div>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
