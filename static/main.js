@@ -5,11 +5,12 @@ var vm = new Vue({
 			data: [],
 			backends: [
 				{nombre: 'Seleccione Conexion', url:''},
-				{nombre: 'Python', url: 'http://127.0.0.1:5000/Produccion/Sales/Money'},
-				{nombre: 'C Sharp', url: ''},
-				{nombre: 'Java', url:''},
-				{nombre: 'Go', url:''},
-				{nombre: 'Php', url:''}
+				{nombre: 'Python  ', url: 'http://192.168.1.114:5000/inventory/stock'},
+				{nombre: 'C Sharp',  url: 'http://192.168.1.110:5000/inventory/stock'},
+				{nombre: 'Java',     url: 'http://192.168.1.111:5000/inventory/stock'},
+				{nombre: 'Go',       url: 'http://192.168.1.112:5000/inventory/stock'},
+				{nombre: 'Php 1',    url: 'http://192.168.1.113:5000/inventory/stock'},
+				{nombre: 'NodeJs',   url: 'http://192.168.1.115:5000/inventory/stock'}	
 			],
 			filter:'',
 			selected_backend: {nombre: 'Seleccione Conexion', url:''}

@@ -28,25 +28,6 @@ CORS(app)
 
 api = Api(app)
 
-class QUERY_2(Resource):
-    def get(self):
-        conn = pymssql.connect(server, username, password, database)
-        result = query_db(conn, "SELECT \
-                                    PCS.ProductSubcategoryID, PCS.Name,\
-                                    SUM(WO.StockedQty) AS WorkOrderQty, \
-                                    SUM(WR.ActualCost* WO.OrderQty) AS WorkOrderCost,\
-                                    SUM(CAST(POD.OrderQty  AS bigint)) PurchaseOrderQty,\
-                                    SUM(POD.UnitPrice*POD.OrderQty) AS PurchaseOrderCost \
-                                    FROM Purchasing.PurchaseOrderDetail POD\
-                                    INNER JOIN Production.Product P ON POD.ProductID=POD.ProductID\
-                                    INNER JOIN Production.ProductSubcategory PCS ON P.ProductSubcategoryID=PCS.ProductSubcategoryID\
-                                    INNER JOIN Production.WorkOrder WO ON P.ProductID=WO.ProductID\
-                                    INNER JOIN Production.WorkOrderRouting WR ON WR.WorkOrderID = WO.WorkOrderID\
-                                    where year(WO.StartDate)=2014 \
-                                    GROUP BY PCS.ProductSubcategoryID, PCS.Name")
-        json_result = (json.dumps(result)) 
-        return jsonify(result)
-
 class QUERY_1(Resource):
     def get(self):
         conn = pymssql.connect(server, username, password, database)
@@ -82,9 +63,8 @@ def query_db(connection, query, args=(), one=False):
     cur.connection.close()
     return (r[0] if r else None) if one else r
 
-api.add_resource(QUERY_1, '/Produccion/Sales/Money') # Route_1
-api.add_resource(QUERY_2, '/Produccion/Sales/Qty') # Route_2
+api.add_resource(QUERY_1, '/inventory/stock') # Route_1
 
 if __name__ == '__main__':
   #app.run(ssl_context=('cert.pem', 'key.pem'),host='localhost', port=5000)
-   app.run()
+   app.run(host='192.168.1.114', port=5000)
