@@ -5,7 +5,7 @@ var vm = new Vue({
 			data: [],
 			backends: [
 				{nombre: 'Seleccione Conexion', url:''},
-				{nombre: 'Python  ', url: 'http://192.168.1.114:5000/inventory/stock'},
+				{nombre: 'Python  ', url: 'http://192.168.1.115:5000/inventory/stock'},
 				{nombre: 'C Sharp',  url: 'http://192.168.1.110:5000/inventory/stock'},
 				{nombre: 'Java',     url: 'http://192.168.1.111:5000/inventory/stock'},
 				{nombre: 'Go',       url: 'http://192.168.1.112:5000/inventory/stock'},
@@ -43,6 +43,30 @@ var vm = new Vue({
 				
 			}).then(response => {
 				this.data = response.data
+				var preparedData = response.data.map((f)=>{
+					return {
+						stock: (f.Stock * 1 ) +1 ,
+						p: f.ProductID + f.ProductName,
+					}
+				})
+				var config = {
+					data: preparedData,
+					xkey: 'p',
+					ykeys: ['stock'],
+					labels: ['Stock'],
+					fillOpacity: 0.6,
+					hideHover: 'auto',
+					behaveLikeLine: true,
+					resize: true,
+					pointFillColors:['#ffffff'],
+					pointStrokeColors: ['black'],
+					lineColors:['red','gray']
+				};
+				
+				config.element = 'line-chart';
+				Morris.Line(config);
+			
+			
 			}).catch(e => {
 				console.log(e)
 			})

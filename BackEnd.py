@@ -67,4 +67,5 @@ api.add_resource(QUERY_1, '/inventory/stock') # Route_1
 
 if __name__ == '__main__':
   #app.run(ssl_context=('cert.pem', 'key.pem'),host='localhost', port=5000)
-   app.run(host='192.168.1.114', port=5000)
+     app.run(host='192.168.1.114', port=5000)
+   # app.run()

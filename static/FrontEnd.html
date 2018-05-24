@@ -1,4 +1,12 @@
-
+<style>
+    #area-chart,
+    #line-chart,
+    #bar-chart,
+    #stacked,
+    #pie-chart{
+      min-height: 250px;
+    }
+    </style>
 <div class="container-fluid" id="app">
 <!-- Inicio Titulos -->
     <div class="row">
@@ -71,15 +79,28 @@
         </table>
 <!-- Fin de Tabla de Datos-->
 
-<footer class="container-fluid">
-                <p> Created by Alvaro Gudiel</p>
-        </footer>
+
 </div>
 
+<div class"row">
+    <div class="col-md-12 text-center">
+       <label class="label label-success">Line Chart</label>
+      <div id="line-chart"></div>
+    </div>
 
+    <footer class="container-fluid">
+        <p> Created by Alvaro Gudiel & Gilda Villeda</p>
+</footer>
+</div>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></script>
+<script src="https://cdn.oesmith.co.uk/morris-0.5.1.css"></script>
 <script src="main.js"></script>
